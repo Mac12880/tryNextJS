@@ -25,3 +25,22 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.card{
+  width: 18rem;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.header{ grid-area: header;}
+.item1{ grid-area: left;}
+.item2{ grid-area: mid;}
+.item3{ grid-area: right;}
+
+.cardGrid{
+  display: grid;
+  grid-template-areas: 
+  'header header header'
+  'left mid right';
+}

@@ -2,50 +2,57 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
-import Link from 'next/link'
-
-const menuLinks = [
-    {
-        title: 'Home',
-        path: '/',
-    },
-    {
-        title: 'About',
-        path: '/about',
-    },
-]
+// import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { mainMenu as menuLinks, site} from '../config'
 
 
-
-const MenuItem = ({title, path}) => {
+const MenuItem = ({title, path, subMenu, id}) => {
+  const router = useRouter()
+  if(subMenu){
+    const activeChild = subMenu.find((item) => {
+      if(router.pathname === item.path){
+        return true
+      }
+      return false
+    })
     return(
-        <Nav.Link href={path}>{title}</Nav.Link>
+    <NavDropdown title={title} id={`nav-dropdown-${id}`} active={activeChild}>
+      {subMenu.map((item, index) => {
+        return(<DropdownItem {...item} key={index} />)
+      })}
+    </NavDropdown>
+    )
+  }
+    return(
+        <Nav.Link active={router.pathname === path} href={path}>{title}</Nav.Link>
     
     )
+}
+
+const DropdownItem = ({title, path, divider}) => {
+  const router = useRouter()
+  if(divider){
+    return(
+      <NavDropdown.Divider />
+    )
+  }
+
+  return (
+  <NavDropdown.Item active={router.pathname === path} href={path}>{title}</NavDropdown.Item>
+  )
 }
 
 const Header = () => {
     return(<Navbar bg="light" expand="lg">
     <Container fluid>
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar.Brand href="#home">{site.title}</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
             {menuLinks.map((item, index) => {
                 return(<MenuItem {...item} key={index}></MenuItem>)
             })}
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Container>
