@@ -27,5 +27,5 @@ export const mainMenu = [
 ]
 
 export const site = {
-    title: 'Next.js Bootsrap Navbar'
+    title: 'Marc\'s Next.js'
 }
