@@ -1,5 +1,5 @@
-@tailwind base;
-@tailwind components;
+/* @tailwind base; */
+/* @tailwind components; */
 @tailwind utilities;
 
 :root {
@@ -55,4 +55,5 @@ body {
   margin-right: auto;
   text-align: center;
 }
+
 

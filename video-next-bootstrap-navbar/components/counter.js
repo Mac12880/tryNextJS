@@ -24,9 +24,5 @@ function Counter({ initialCount }){
             <button className="btn btn-success" onClick={incrementCount}>+</button>
         </div>
     )
-
 }
-
-
-
 export default Counter

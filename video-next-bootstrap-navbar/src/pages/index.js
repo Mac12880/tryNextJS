@@ -4,6 +4,7 @@
 import Counter from '../../components/counter'
 import User from '../../components/user'
 
+
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
