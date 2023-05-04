@@ -22,10 +22,17 @@ export const mainMenu = [
         title: 'About',
         path: '/about',
     },
+    {
+        divider: true
+    },
+    {
+        title: 'Calculator',
+        path: '/calculator',
+    },
     ]
     }
 ]
 
 export const site = {
-    title: 'Marc\'s Next.js'
+    title: 'Marc\'s Next/React.js Playground'
 }

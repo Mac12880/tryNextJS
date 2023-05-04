@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 function Counter({ initialCount }){
     const [count, setCount] = useState(initialCount)
-
+    
     function incrementCount(){
         // passing currCount as function to change count
         setCount(currCount => currCount + 1)
